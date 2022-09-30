@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import BlogLogo from "../img/BlogLogo.png";
 
 const Footer = () => {
 	return (
 		<footer>
-			<img src={BlogLogo} alt="" />
+			<Link className="link" to="/">
+				<img src={BlogLogo} alt="" />
+			</Link>
 			<span>
 				Copyright owned by <b>Hoang</b>
 			</span>
