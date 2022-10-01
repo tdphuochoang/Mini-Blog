@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 
 // dotenv.config();
 
+//REGISTER
 export const register = (req, res) => {
 	//CHECk EXISTING USER
 	const q = "SELECT * FROM users WHERE email = ? OR username = ? ";
@@ -27,6 +28,7 @@ export const register = (req, res) => {
 	});
 };
 
+//LOGIN
 export const login = (req, res) => {
 	//CHECK USER
 	const q = "SELECT * FROM users WHERE username = ?";
@@ -49,4 +51,13 @@ export const login = (req, res) => {
 	});
 };
 
-export const logout = (req, res) => {};
+//LOGOUT
+export const logout = (req, res) => {
+	res
+		.clearCookie("access_token", {
+			sameSite: "none",
+			secure: true,
+		})
+		.status(200)
+		.json("User has been logged out.");
+};
